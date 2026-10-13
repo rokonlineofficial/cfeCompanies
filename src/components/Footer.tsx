@@ -35,7 +35,26 @@ export default function Footer() {
       <div className="border-t border-ink/15">
         <div className="mx-auto flex max-w-[88rem] flex-wrap justify-between gap-2 px-6 py-6 text-sm md:px-8 lg:px-10">
           <p>© {new Date().getFullYear()} CFE COMPANIES</p>
-          <p className="flex items-center gap-4">Designed by Rok Online<button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top" className="grid size-9 place-items-center rounded-full border border-ink/30 text-ink transition-colors hover:bg-ink hover:text-brand"><ArrowUp size={16} aria-hidden="true" /></button></p>
+          <div className="flex items-center justify-between">
+            <a
+              href="https://www.rokonline.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4"
+            >
+              Developed by Rok Online
+            </a>
+            
+
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              aria-label="Back to top"
+              className="grid size-9 place-items-center rounded-full border border-ink/30 text-ink transition-colors hover:bg-ink hover:text-brand"
+            >
+              <ArrowUp size={16} aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </div>
     </footer>
