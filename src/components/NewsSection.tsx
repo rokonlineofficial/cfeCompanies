@@ -112,11 +112,11 @@ function ArrowIcon() {
   )
 }
 
-export default function NewsSection() {
+export default function NewsSection({ limit }: { limit?: number }) {
   return (
     <div className="news-grid">
 
-      {posts.map((post, index) => (
+      {posts.slice(0, limit ?? posts.length).map((post, index) => (
         <article
           key={post.slug}
           className="
