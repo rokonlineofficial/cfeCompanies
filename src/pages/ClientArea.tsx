@@ -1,4 +1,4 @@
-import { ArrowRight, FileText, FolderOpen, Headphones } from 'lucide-react'
+import { FileText, FolderOpen, Headphones } from 'lucide-react'
 import Seo from '../components/Seo'
 import SectionHeading from '../components/SectionHeading'
 import Button from '../components/Button'

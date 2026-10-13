@@ -81,6 +81,16 @@ const posts = [
     image:
       'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85',
   },
+
+  // নতুন blog এখান থেকে নিচে add করবে
+  // {
+  //   slug: '/news/your-new-blog',
+  //   category: 'Accounting',
+  //   date: 'August 15, 2026',
+  //   title: 'Your New Blog Title',
+  //   excerpt: 'Your blog short description goes here.',
+  //   image: 'YOUR_IMAGE_URL',
+  // },
 ]
 
 function ArrowIcon() {
@@ -141,7 +151,7 @@ export default function NewsSection() {
             <img
               src={post.image}
               alt={post.title}
-              loading={index > 2 ? 'lazy' : 'eager'}
+              loading={index < 3 ? 'eager' : 'lazy'}
               className="
                 h-full
                 w-full
@@ -195,18 +205,14 @@ export default function NewsSection() {
                 text-black/45
               "
             >
-              <span>
-                {post.date}
-              </span>
+              <span>{post.date}</span>
 
               <span
                 className="h-1 w-1 rounded-full bg-[#4BD0FE]"
                 aria-hidden="true"
               />
 
-              <span>
-                CFE Companies
-              </span>
+              <span>CFE Companies</span>
             </div>
 
 
@@ -260,7 +266,6 @@ export default function NewsSection() {
               >
 
                 <span className="relative">
-
                   Read Article
 
                   <span
@@ -276,7 +281,6 @@ export default function NewsSection() {
                       group-hover:w-full
                     "
                   />
-
                 </span>
 
 
