@@ -62,11 +62,22 @@ export default function Home() {
       <ClientLogos />
       <Testimonials />
 
-      <section className="mx-auto max-w-[88rem] px-6 pb-4 md:px-8 lg:px-10">
-        <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
+      <section className="mx-auto w-full max-w-[88rem] px-6 pb-20 md:px-8 lg:px-10">
+        <div className="mb-12 flex items-end justify-between gap-6">
           <SectionHeading title="Latest News" />
-          <Link to="/news" className="font-semibold text-ink">All news</Link>
+
+          <Link
+            to="/news"
+            className="inline-flex shrink-0 items-center gap-3 font-semibold text-ink transition-colors duration-200 hover:text-[#4BD0FE]"
+          >
+            <span>All news</span>
+
+            <span className="grid h-9 w-9 place-items-center rounded-full border border-ink/20 transition-all duration-200 hover:border-[#4BD0FE] hover:bg-[#4BD0FE]">
+              →
+            </span>
+          </Link>
         </div>
+
         <NewsList limit={3} />
       </section>
       <CTASection />

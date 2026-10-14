@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
 
+type NewsSectionProps = {
+  limit?: number
+}
+
 const posts = [
   {
     slug: '/news/why-accurate-bookkeeping-matters',
@@ -81,16 +85,6 @@ const posts = [
     image:
       'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85',
   },
-
-  // নতুন blog এখান থেকে নিচে add করবে
-  // {
-  //   slug: '/news/your-new-blog',
-  //   category: 'Accounting',
-  //   date: 'August 15, 2026',
-  //   title: 'Your New Blog Title',
-  //   excerpt: 'Your blog short description goes here.',
-  //   image: 'YOUR_IMAGE_URL',
-  // },
 ]
 
 function ArrowIcon() {
@@ -112,17 +106,22 @@ function ArrowIcon() {
   )
 }
 
-export default function NewsSection({ limit }: { limit?: number }) {
-  return (
-    <div className="news-grid">
+export default function NewsSection({ limit }: NewsSectionProps) {
+  const visiblePosts = limit
+    ? posts.slice(0, limit)
+    : posts
 
-      {posts.slice(0, limit ?? posts.length).map((post, index) => (
+  return (
+    <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+      {visiblePosts.map((post, index) => (
         <article
           key={post.slug}
           className="
             group
             flex
             h-full
+            min-w-0
             flex-col
             overflow-hidden
             rounded-2xl
@@ -144,6 +143,8 @@ export default function NewsSection({ limit }: { limit?: number }) {
               relative
               block
               aspect-[16/10]
+              w-full
+              shrink-0
               overflow-hidden
               bg-[#F5F5F5]
             "
@@ -153,6 +154,7 @@ export default function NewsSection({ limit }: { limit?: number }) {
               alt={post.title}
               loading={index < 3 ? 'eager' : 'lazy'}
               className="
+                block
                 h-full
                 w-full
                 object-cover
@@ -188,7 +190,15 @@ export default function NewsSection({ limit }: { limit?: number }) {
 
 
           {/* Content */}
-          <div className="flex flex-1 flex-col p-6 md:p-7">
+          <div
+            className="
+              flex
+              flex-1
+              flex-col
+              p-6
+              md:p-7
+            "
+          >
 
             {/* Meta */}
             <div
@@ -205,14 +215,24 @@ export default function NewsSection({ limit }: { limit?: number }) {
                 text-black/45
               "
             >
-              <span>{post.date}</span>
+              <span>
+                {post.date}
+              </span>
 
               <span
-                className="h-1 w-1 rounded-full bg-[#4BD0FE]"
+                className="
+                  h-1
+                  w-1
+                  shrink-0
+                  rounded-full
+                  bg-[#4BD0FE]
+                "
                 aria-hidden="true"
               />
 
-              <span>CFE Companies</span>
+              <span>
+                CFE Companies
+              </span>
             </div>
 
 
@@ -220,18 +240,22 @@ export default function NewsSection({ limit }: { limit?: number }) {
             <h2
               className="
                 mb-4
-                text-[1.45rem]
+                text-[1.4rem]
                 font-bold
                 leading-[1.1]
                 tracking-[-0.035em]
                 text-black
-                transition-colors
-                duration-200
-                group-hover:text-black/70
-                md:text-[1.65rem]
+                md:text-[1.55rem]
               "
             >
-              <Link to={post.slug}>
+              <Link
+                to={post.slug}
+                className="
+                  transition-colors
+                  duration-200
+                  hover:text-black/65
+                "
+              >
                 {post.title}
               </Link>
             </h2>
@@ -252,7 +276,6 @@ export default function NewsSection({ limit }: { limit?: number }) {
 
             {/* Read Article */}
             <div className="mt-auto pt-2">
-
               <Link
                 to={post.slug}
                 className="
@@ -290,6 +313,7 @@ export default function NewsSection({ limit }: { limit?: number }) {
                     grid
                     h-9
                     w-9
+                    shrink-0
                     place-items-center
                     rounded-full
                     border
@@ -301,14 +325,12 @@ export default function NewsSection({ limit }: { limit?: number }) {
                     group-hover:translate-x-1
                     group-hover:border-[#4BD0FE]
                     group-hover:bg-[#4BD0FE]
-                    group-hover:text-black
                   "
                 >
                   <ArrowIcon />
                 </span>
 
               </Link>
-
             </div>
 
           </div>
